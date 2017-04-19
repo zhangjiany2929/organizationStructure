@@ -7,7 +7,7 @@
     <script type='text/javascript' src='jquery.min.js'></script>
     <script type='text/javascript' src='jquery.jOrgChart.js'></script>
     <style>
-        a {
+        span {
             text-decoration: none;
             color: #fff;
             font-size: 12px;
@@ -35,6 +35,7 @@
             dataType: 'JSON',
             data: {action: 'org_select'},
             success: function(result){
+                $.prjData = result.data;
                 var showlist = $("<ul id='org' style='display:none'></ul>");
                 showall(result.data, showlist);
                 $("#jOrgChart").append(showlist);
@@ -42,6 +43,11 @@
                     chartElement : '#jOrgChart',//指定在某个dom生成jorgchart
                     dragAndDrop : false //设置是否可拖动
                 });
+				$('.node').click(function() {
+					//debugger;
+                    $('.node').css('backgroundColor', '#35363B'); //全部颜色设置为默认，然后开始高亮指定节点
+                    showRelItems(this);
+				})
 
             }
         });
@@ -50,16 +56,28 @@
     function showall(menu_list, parent) {
         $.each(menu_list, function(index, val) {
             if(val.childrens.length > 0){
-
                 var li = $("<li></li>");
-                li.append("<a href='javascript:void(0)' onclick=getOrgId("+val.id+");>"+val.name+"</a>").append("<ul></ul>").appendTo(parent);
+                li.append("<span data-id='"+val.id+"'>"+val.name+"</span>").append("<ul></ul>").appendTo(parent);
                 //递归显示
                 showall(val.childrens, $(li).children().eq(1));
             }else{
-                $("<li></li>").append("<a href='javascript:void(0)' onclick=getOrgId("+val.id+");>"+val.name+"</a>").appendTo(parent);
+                $("<li></li>").append("<span data-id='"+val.id+"'>"+val.name+"</span>").appendTo(parent);
             }
         });
+    }
 
+    function showRelItems(node) {
+        debugger;
+        var itemId = node.firstChild.getAttribute('data-id');
+        node.style.backgroundColor = '#FF0000';
+    }
+
+    function findObjById(dataId) {
+        var item = {
+            "id": dataId,
+
+        };
+        return item;
     }
 
 </script>

@@ -5,12 +5,52 @@
   width                 : 4px;
 }
 
+.jOrgChart .line2 {
+  height                : 60px;
+  width                 : 4px;
+}
+
+.jOrgChart .ph {
+  height                : 28px;
+  width                 : 100%;
+}
+
+.jOrgChart .lefttop {
+  height                : 28px;
+  width                 : 100%;
+  border-top: 3px solid black;
+  border-left: 3px solid black;
+}
+
+.jOrgChart .lefttop2 {
+  height                : 100%;
+  border-right: 3px solid black;
+}
+
+.jOrgChart .lefttop3 {
+  border-right: 3px solid black;
+}
+
+
 .jOrgChart .down {
   background-color 		: black;	
   margin 				: 0px auto;
 }
 
+.jOrgChart .downRight {
+  background-color 		: black;
+  margin 				: 0px 0px 0px auto;
+}
+
+.jOrgChart .downLeft {
+  border-right: 3px solid black;
+}
+
 .jOrgChart .top {
+  border-top          : 3px solid black;
+}
+
+.jOrgChart .mid {
   border-top          : 3px solid black;
 }
 

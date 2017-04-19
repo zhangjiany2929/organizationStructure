@@ -1,0 +1,370 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jOrgChart异步加载</title>
+    <link rel="stylesheet" href="jquery.jOrgChart.css">
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <script type="text/javascript" src="jquery.jOrgChart.js"></script>
+    <style>
+        span {
+            text-decoration: none;
+            color: #fff;
+            font-size: 12px;
+        }
+
+        .jOrgChart .node {
+            width: 120px;
+            height: 50px;
+            line-height: 50px;
+            border-radius: 4px;
+            margin: 0 8px;
+        }
+    </style>
+</head>
+<body>
+<!--显示组织架构图-->
+<div id="jOrgChart">
+
+    <div class="jOrgChart">
+        <table cellpadding="0" cellspacing="0" border="0">
+            <tbody>
+            <tr>
+                <td colspan="4" class="line2">
+                    <div class="ph"></div>
+                    <div class="lefttop2"></div>
+
+                    <!--<div class="line2 downRight"></div>-->
+                </td>
+                <td colspan="1" class="line2">
+                    <!--<div class="line2">-->
+                        <!--<div class="ph"></div>-->
+                        <!--<div class="lefttop"></div>-->
+                    <!--</div>-->
+                </td>
+                <td class="node-cell">
+                    <div class="node" style="background-color: rgb(53, 54, 59); cursor: n-resize;"><span
+                            data-id="1">设计1</span></div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4" class="line2">
+                    <div class="lefttop2"></div>
+                </td>
+                <td colspan="1">
+                    <!--<div class="downLeft"></div>-->
+                </td>
+            </tr>
+            <tr class="node-cells expanded">
+                <td class="node-cell lefttop3" colspan="4">
+                    <div class="node" style="background-color: rgb(53, 54, 59); cursor: n-resize;"><span
+                            data-id="1">项目</span></div>
+
+                </td>
+                <td colspan="1" class="line2">
+
+                </td>
+                <td class="node-cell">
+                    <div class="node" style="background-color: rgb(53, 54, 59); cursor: n-resize;"><span
+                            data-id="1">设计2</span></div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <div class="line2 downRight"></div>
+                </td>
+                <td colspan="2" class="line2">
+                    <div class="lefttop2"></div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <div class="line2 downRight"></div>
+                </td>
+                <td colspan="2" class="line top">
+                </td>
+                <td colspan="1" class="line top">
+                </td>
+                <td class="node-cell">
+                    <div class="node" style="background-color: rgb(53, 54, 59); cursor: n-resize;"><span
+                            data-id="1">设计3</span></div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <div class="line downRight"></div>
+                </td>
+            </tr>
+            <tr>
+                <td class="line left">&nbsp;</td>
+                <td class="line right top">&nbsp;</td>
+                <td class="line left top">&nbsp;</td>
+                <td class="line right">&nbsp;</td>
+            </tr>
+            <tr>
+                <td class="node-container" colspan="2">
+                    <table cellpadding="0" cellspacing="0" border="0">
+                        <tbody>
+                        <tr class="node-cells expanded">
+                            <td class="node-cell" colspan="4">
+                                <div class="node" style="background-color: rgb(53, 54, 59); cursor: n-resize;"><span
+                                        data-id="2">监理标段</span></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="4">
+                                <div class="line down"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="line left">&nbsp;</td>
+                            <td class="line right top">&nbsp;</td>
+                            <td class="line left top">&nbsp;</td>
+                            <td class="line right">&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td class="node-container" colspan="2">
+                                <table cellpadding="0" cellspacing="0" border="0">
+                                    <tbody>
+                                    <tr class="node-cells expanded">
+                                        <td class="node-cell" colspan="6">
+                                            <div class="node"
+                                                 style="background-color: rgb(53, 54, 59); cursor: n-resize;"><span
+                                                    data-id="5">监理标段1</span></div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="6">
+                                            <div class="line down"></div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="line left">&nbsp;</td>
+                                        <td class="line right top">&nbsp;</td>
+                                        <td class="line left top">&nbsp;</td>
+                                        <td class="line right top">&nbsp;</td>
+                                        <td class="line left top">&nbsp;</td>
+                                        <td class="line right">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="node-container" colspan="2">
+                                            <table cellpadding="0" cellspacing="0" border="0">
+                                                <tbody>
+                                                <tr class="node-cells">
+                                                    <td class="node-cell" colspan="2">
+                                                        <div class="node" style="background-color: rgb(53, 54, 59);">
+                                                            <span data-id="10">施工标段1</span></div>
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                        <td class="node-container" colspan="2">
+                                            <table cellpadding="0" cellspacing="0" border="0">
+                                                <tbody>
+                                                <tr class="node-cells">
+                                                    <td class="node-cell" colspan="2">
+                                                        <div class="node" style="background-color: rgb(53, 54, 59);">
+                                                            <span data-id="11">施工标段2</span></div>
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                        <td class="node-container" colspan="2">
+                                            <table cellpadding="0" cellspacing="0" border="0">
+                                                <tbody>
+                                                <tr class="node-cells">
+                                                    <td class="node-cell" colspan="2">
+                                                        <div class="node" style="background-color: rgb(53, 54, 59);">
+                                                            <span data-id="12">施工标段3</span></div>
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                            <td class="node-container" colspan="2">
+                                <table cellpadding="0" cellspacing="0" border="0">
+                                    <tbody>
+                                    <tr class="node-cells contracted">
+                                        <td class="node-cell" colspan="2">
+                                            <div class="node"
+                                                 style="background-color: rgb(53, 54, 59); cursor: s-resize;"><span
+                                                    data-id="6">监理标段2</span></div>
+                                        </td>
+                                    </tr>
+                                    <tr style="visibility: hidden;">
+                                        <td colspan="2">
+                                            <div class="line down"></div>
+                                        </td>
+                                    </tr>
+                                    <tr style="visibility: hidden;">
+                                        <td class="line left">&nbsp;</td>
+                                        <td class="line right">&nbsp;</td>
+                                    </tr>
+                                    <tr style="visibility: hidden;">
+                                        <td class="node-container" colspan="2">
+                                            <table cellpadding="0" cellspacing="0" border="0">
+                                                <tbody>
+                                                <tr class="node-cells">
+                                                    <td class="node-cell" colspan="2">
+                                                        <div class="node" style="background-color: rgb(53, 54, 59);">
+                                                            <span data-id="13">施工标段4</span></div>
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </td>
+                <td class="node-container" colspan="2">
+                    <table cellpadding="0" cellspacing="0" border="0">
+                        <tbody>
+                        <tr class="node-cells expanded">
+                            <td class="node-cell" colspan="8">
+                                <div class="node" style="cursor: n-resize; background-color: rgb(53, 54, 59);"><span
+                                        data-id="3">其他标段</span></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="8">
+                                <div class="line down"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="line left">&nbsp;</td>
+                            <td class="line right top">&nbsp;</td>
+                            <td class="line left top">&nbsp;</td>
+                            <td class="line right top">&nbsp;</td>
+                            <td class="line left top">&nbsp;</td>
+                            <td class="line right top">&nbsp;</td>
+                            <td class="line left top">&nbsp;</td>
+                            <td class="line right">&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td class="node-container" colspan="2">
+                                <table cellpadding="0" cellspacing="0" border="0">
+                                    <tbody>
+                                    <tr class="node-cells">
+                                        <td class="node-cell" colspan="2">
+                                            <div class="node" style="background-color: rgb(53, 54, 59);"><span
+                                                    data-id="7">设计标段1</span></div>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                            <td class="node-container" colspan="2">
+                                <table cellpadding="0" cellspacing="0" border="0">
+                                    <tbody>
+                                    <tr class="node-cells">
+                                        <td class="node-cell" colspan="2">
+                                            <div class="node" style="background-color: rgb(53, 54, 59);"><span
+                                                    data-id="8">设计标段2</span></div>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                            <td class="node-container" colspan="2">
+                                <table cellpadding="0" cellspacing="0" border="0">
+                                    <tbody>
+                                    <tr class="node-cells">
+                                        <td class="node-cell" colspan="2">
+                                            <div class="node" style="background-color: rgb(53, 54, 59);"><span
+                                                    data-id="100">设计标段3</span></div>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                            <td class="node-container" colspan="2">
+                                <table cellpadding="0" cellspacing="0" border="0">
+                                    <tbody>
+                                    <tr class="node-cells">
+                                        <td class="node-cell" colspan="2">
+                                            <div class="node" style="background-color: rgb(255, 0, 0);"><span
+                                                    data-id="101">设计标段4</span></div>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    $(function () {
+        //数据返回
+        $.ajax({
+            url: "test.json",
+            type: 'POST',
+            dataType: 'JSON',
+            data: {action: 'org_select'},
+            success: function (result) {
+                $.prjData = result.data;
+                var showlist = $("<ul id='org' style='display:none'></ul>");
+                showall(result.data, showlist);
+                $("#jOrgChart").append(showlist);
+//                $("#org").jOrgChart({
+//                    chartElement: '#jOrgChart',//指定在某个dom生成jorgchart
+//                    dragAndDrop: false //设置是否可拖动
+//                });
+                $('.node').click(function () {
+                    //debugger;
+                    $('.node').css('backgroundColor', '#35363B'); //全部颜色设置为默认，然后开始高亮指定节点
+                    showRelItems(this);
+                })
+
+            }
+        });
+    });
+
+    function showall(menu_list, parent) {
+        $.each(menu_list, function (index, val) {
+            if (val.childrens.length > 0) {
+                var li = $("<li></li>");
+                li.append("<span data-id='" + val.id + "'>" + val.name + "</span>").append("<ul></ul>").appendTo(parent);
+                //递归显示
+                showall(val.childrens, $(li).children().eq(1));
+            } else {
+                $("<li></li>").append("<span data-id='" + val.id + "'>" + val.name + "</span>").appendTo(parent);
+            }
+        });
+    }
+
+    function showRelItems(node) {
+        debugger;
+        var itemId = node.firstChild.getAttribute('data-id');
+        node.style.backgroundColor = '#FF0000';
+    }
+
+    function findObjById(dataId) {
+        var item = {
+            "id": dataId,
+
+        };
+        return item;
+    }
+
+</script>
+
+</body>
+</html>
