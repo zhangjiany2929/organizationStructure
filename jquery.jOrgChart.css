@@ -10,9 +10,22 @@
   width                 : 4px;
 }
 
+.jOrgChart .line3 {
+  height                : 15px;
+  width                 : 4px;
+}
+
 .jOrgChart .ph {
   height                : 28px;
   width                 : 100%;
+}
+
+.jOrgChart .ph2 {
+  height                : 28px;
+}
+
+.jOrgChart .inlineB {
+  display: inline-block;
 }
 
 .jOrgChart .lefttop {
@@ -31,6 +44,27 @@
   border-right: 3px solid black;
 }
 
+.jOrgChart .lefttop4 {
+  /*height                : 100%;*/
+  border-right: 3px solid black;
+}
+
+
+.jOrgChart .lefttop5 {
+  height                : 300%;
+  border-right: 3px solid black;
+}
+
+.jOrgChart .shortHeri {
+  height: 28px;
+  width: 10px;
+  border-bottom: 3px solid black;
+}
+
+.jOrgChart .shortRight {
+  height: 28px;
+  border-right: 3px solid black;
+}
 
 .jOrgChart .down {
   background-color 		: black;	
@@ -42,8 +76,103 @@
   margin 				: 0px 0px 0px auto;
 }
 
+.jOrgChart .downRight2 {
+  /*background-color 		: black;*/
+  border-right: 2px solid black;
+  height: 60px;
+  width: 50%;
+  box-sizing: border-box;
+  display: inline-block;
+}
+
+.jOrgChart .downRight3 {
+  /*background-color 		: black;*/
+  border-right: 2px solid black;
+  height: 15px;
+  width: 50%;
+  box-sizing: border-box;
+  display: inline-block;
+}
+
+.jOrgChart .downRight4 {
+  /*background-color 		: black;*/
+  border-right: 2px solid black;
+  height: 60px;
+  width: 50%;
+  box-sizing: border-box;
+  display: inline-block;
+}
+
+.jOrgChart .widthHight {
+  height: 60px;
+  width: 50%;
+}
+
+.jOrgChart .downRightHigh {
+  /*background-color 		: black;*/
+  border-right: 2px solid black;
+  height: 60px;
+  width: 50%;
+  box-sizing: border-box;
+  display: inline-block;
+}
+
+.jOrgChart .noFont {
+  text-align: left;
+  font-size: 0;
+}
+
+.jOrgChart .downMid {
+  background-color 		: black;
+  margin 				: 0px auto;
+}
+
+.jOrgChart .downRight {
+  /*border-right:*/
+}
+
 .jOrgChart .downLeft {
   border-right: 3px solid black;
+}
+
+.jOrgChart .downLeft2 {
+  /*background-color 		: black;*/
+  border-left: 2px solid black;
+  height: 60px;
+  width: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+}
+
+.jOrgChart .downLeft3 {
+  /*background-color 		: black;*/
+  border-left: 2px solid black;
+  height: 15px;
+  width: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+}
+
+.jOrgChart .downLeft4 {
+  /*background-color 		: black;*/
+  border-left: 2px solid black;
+  height: 60px;
+  width: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+}
+
+.jOrgChart .downLeftHigh {
+  /*background-color 		: black;*/
+  border-left: 2px solid black;
+  height: 60px;
+  width: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+}
+
+.jOrgChart .border2 {
+  box-sizing: border-box;
 }
 
 .jOrgChart .top {
@@ -60,6 +189,20 @@
 
 .jOrgChart .right {
   border-left           : 2px solid black;
+}
+
+.jOrgChart .left4 {
+  border-left           : 3px solid black;
+}
+
+.jOrgChart .left5 {
+  border-left           : 3px solid black;
+  position: relative;
+  left: -3px;
+}
+
+.jOrgChart .right4 {
+  border-right           : 3px solid black;
 }
 
 /* node cell */

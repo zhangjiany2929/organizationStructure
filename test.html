@@ -6,6 +6,7 @@
     <link rel="stylesheet" href='jquery.jOrgChart.css'/>
     <script type='text/javascript' src='jquery.min.js'></script>
     <script type='text/javascript' src='jquery.jOrgChart.js'></script>
+    <script type="text/javascript" src="genSjSect.js"></script>
     <style>
         span {
             text-decoration: none;
@@ -47,7 +48,31 @@
 					//debugger;
                     $('.node').css('backgroundColor', '#35363B'); //全部颜色设置为默认，然后开始高亮指定节点
                     showRelItems(this);
-				})
+				});
+				var fullColSpan = $('.jOrgChart .node')[0].parentNode.colSpan; //获取整个表格的列数
+                var sjSects = [
+                    {
+                        id: '200',
+                        name: '设计标1'
+                    },
+                    {
+                        id: '201',
+                        name: '设计标2'
+                    },
+                    {
+                        id: '202',
+                        name: '设计标3'
+                    },
+                    {
+                        id: '203',
+                        name: '设计标4'
+                    },
+                    {
+                        id: '203',
+                        name: '设计标5'
+                    }
+                ];
+                genSjSect(sjSects, fullColSpan);
 
             }
         });
@@ -79,6 +104,20 @@
         };
         return item;
     }
+
+//    function genSjSect(sjSects, colNum) { //根据传入设计标数组，在表格右侧生成设计标段结构样式
+//        if(!sjSects) return;
+//        var sjSectNum = sjSects.length; //设计标数目
+//        if(sjSectNum >= 3) {
+//
+//            var a=$('tr').eq(0);
+//            a.replaceWith(node);
+//        } else if(sjSectNum === 2) {
+//
+//        } else if (sjSectNum === 1) {
+//
+//        }
+//    }
 
 </script>
 </body>

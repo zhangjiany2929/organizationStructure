@@ -6,83 +6,55 @@
     "childrens": [
       {
         "id": 2,
-        "name": "监理标段",
+        "name": "监理标段1",
         "pid": 1,
         "childrens": [
           {
             "id": 5,
-            "name": "监理标段1",
+            "name": "施工标1",
             "pid": 2,
             "childrens": [
-              {
-                "id": 10,
-                "name": "施工标段1",
-                "pid": 5,
-				"sjid": 7,
-                "childrens": [
-                ]
-              },
-              {
-                "id": 11,
-                "name": "施工标段2",
-                "pid": 5,
-                "childrens": [
-                ]
-              },
-              {
-                "id": 12,
-                "name": "施工标段3",
-                "pid": 5,
-                "childrens": [
-                ]
-              }
             ]
           },
           {
             "id": 6,
-            "name": "监理标段2",
+            "name": "施工标2",
             "pid": 2,
             "childrens": [
-              {
-                "id": 13,
-                "name": "施工标段4",
-                "pid": 6,
-                "childrens": [
-                ]
-              }
+
             ]
           }
         ]
       },
       {
         "id": 3,
-        "name": "其他标段",
+        "name": "监理标2",
         "pid": 1,
         "childrens": [
           {
             "id": 7,
-            "name": "设计标段1",
+            "name": "施工标1",
             "pid": 3,
             "childrens": [
             ]
           },
           {
             "id": 8,
-            "name": "设计标段2",
+            "name": "施工标2",
             "pid": 3,
             "childrens": [
             ]
           },
 		  {
             "id": 100,
-            "name": "设计标段3",
+            "name": "施工标3",
             "pid": 3,
             "childrens": [
             ]
           },
 		  {
             "id": 101,
-            "name": "设计标段4",
+            "name": "施工标4",
             "pid": 3,
             "childrens": [
             ]
