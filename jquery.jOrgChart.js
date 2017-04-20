@@ -109,7 +109,6 @@
     var nodeCount = 0;
     // Method that recursively builds the tree
     function buildNode($node, $appendTo, level, opts) {
-        debugger;
         var $table = $("<table cellpadding='0' cellspacing='0' border='0'/>");
         var $tbody = $("<tbody/>");
 
@@ -138,7 +137,7 @@
             .append($nodeContent);
 
         // Expand and contract nodes
-        if ($childNodes.length > 0) {
+        if ($childNodes.length > 0 && false) {
             $nodeDiv.click(function () {
                 var $this = $(this);
                 var $tr = $this.closest("tr");
@@ -167,7 +166,7 @@
 
         if ($childNodes.length > 0) {
             // if it can be expanded then change the cursor
-            $nodeDiv.css('cursor', 'n-resize');
+            $nodeDiv.css('cursor', 'default');
 
             // recurse until leaves found (-1) or to the level specified
             if (opts.depth == -1 || (level + 1 < opts.depth)) {
@@ -219,7 +218,7 @@
                     $nodeRow.nextAll('tr').css('visibility', 'hidden');
                     $nodeRow.removeClass('expanded');
                     $nodeRow.addClass('contracted');
-                    $nodeDiv.css('cursor', 's-resize');
+                    $nodeDiv.css('cursor', 'default');
                 } else {
                     $nodeDiv.addClass(item);
                 }
@@ -237,7 +236,6 @@
     }
 
     function buildNode2($node, $appendTo, level, opts) {
-        debugger;
         var $table = $("<table cellpadding='0' cellspacing='0' border='0'/>");
         var $tbody = $("<tbody/>");
 
@@ -272,7 +270,7 @@
                 var $tr = $this.closest("tr");
 
                 if ($tr.hasClass('contracted')) {
-                    $this.css('cursor', 'n-resize');
+                    $this.css('cursor', 'default');
                     $tr.removeClass('contracted').addClass('expanded');
                     $tr.nextAll("tr").css('visibility', '');
 
@@ -280,7 +278,7 @@
                     // maintain their appearance
                     $node.removeClass('collapsed');
                 } else {
-                    $this.css('cursor', 's-resize');
+                    $this.css('cursor', 'default');
                     $tr.removeClass('expanded').addClass('contracted');
                     $tr.nextAll("tr").css('visibility', 'hidden');
 
@@ -295,7 +293,7 @@
 
         if ($childNodes.length > 0) {
             // if it can be expanded then change the cursor
-            $nodeDiv.css('cursor', 'n-resize');
+            $nodeDiv.css('cursor', 'default');
 
             // recurse until leaves found (-1) or to the level specified
             if (opts.depth == -1 || (level + 1 < opts.depth)) {
@@ -347,7 +345,7 @@
                     $nodeRow.nextAll('tr').css('visibility', 'hidden');
                     $nodeRow.removeClass('expanded');
                     $nodeRow.addClass('contracted');
-                    $nodeDiv.css('cursor', 's-resize');
+                    $nodeDiv.css('cursor', 'default');
                 } else {
                     $nodeDiv.addClass(item);
                 }

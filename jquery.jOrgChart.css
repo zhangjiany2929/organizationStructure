@@ -220,6 +220,7 @@
   height                : 60px;
   z-index 				: 10;
   margin               : 0 2px;
+  cursor: default;
 }
 
 /* jQuery drag 'n drop */

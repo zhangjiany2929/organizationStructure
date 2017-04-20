@@ -1,25 +1,31 @@
 {
   "data": [{
-    "id": 1,
+    "id": "1",
     "name": "项目",
     "pid": null,
+    "type": "xm",
     "childrens": [
       {
-        "id": 2,
+        "id": "2",
         "name": "监理标段1",
-        "pid": 1,
+        "pid": "1",
+        "type": "jl",
         "childrens": [
           {
-            "id": 5,
+            "id": "5",
             "name": "施工标1",
-            "pid": 2,
+            "pid": "2",
+            "type": "sg",
+            "qtId": ["200"],
             "childrens": [
             ]
           },
           {
-            "id": 6,
+            "id": "6",
             "name": "施工标2",
-            "pid": 2,
+            "pid": "2",
+            "qtId": ["201"],
+            "type": "sg",
             "childrens": [
 
             ]
@@ -27,35 +33,44 @@
         ]
       },
       {
-        "id": 3,
+        "id": "3",
         "name": "监理标2",
-        "pid": 1,
+        "pid": "1",
+        "type": "jl",
         "childrens": [
           {
-            "id": 7,
+            "id": "7",
             "name": "施工标1",
-            "pid": 3,
+            "pid": "3",
+            "qtId": ["202"],
+            "type": "sg",
             "childrens": [
             ]
           },
           {
-            "id": 8,
+            "id": "8",
             "name": "施工标2",
-            "pid": 3,
+            "pid": "3",
+            "qtId": ["200"],
+            "type": "sg",
             "childrens": [
             ]
           },
 		  {
-            "id": 100,
+            "id": "100",
             "name": "施工标3",
-            "pid": 3,
+            "pid": "3",
+            "qtId": ["203"],
+            "type": "sg",
             "childrens": [
             ]
           },
 		  {
-            "id": 101,
+            "id": "101",
             "name": "施工标4",
-            "pid": 3,
+            "pid": "3",
+            "qtId": ["204"],
+            "type": "sg",
             "childrens": [
             ]
           }

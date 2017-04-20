@@ -6,13 +6,15 @@
     <link rel="stylesheet" href='jquery.jOrgChart.css'/>
     <script type='text/javascript' src='jquery.min.js'></script>
     <script type='text/javascript' src='jquery.jOrgChart.js'></script>
-    <script type="text/javascript" src="genSjSect.js"></script>
+    <script type="text/javascript" src="genSjSect_new.js"></script>
+    <script type="text/javascript" src="parseData.js"></script>
     <style>
         span {
             text-decoration: none;
             color: #fff;
             font-size: 12px;
         }
+
         .jOrgChart .node {
             width: 120px;
             height: 50px;
@@ -28,28 +30,26 @@
 
 
 <script type='text/javascript'>
-    $(function(){
+    $(function () {
         //数据返回
         $.ajax({
             url: "test.json",
             type: 'POST',
             dataType: 'JSON',
             data: {action: 'org_select'},
-            success: function(result){
-                $.prjData = result.data;
+            success: function (result) {
+                $.prjData = result.data[0];
+                $.jlSect = getSects($.prjData, [], 'jl');
+                $.sgSect = getSects($.prjData, [], 'sg');
                 var showlist = $("<ul id='org' style='display:none'></ul>");
                 showall(result.data, showlist);
                 $("#jOrgChart").append(showlist);
-                $("#org").jOrgChart( {
-                    chartElement : '#jOrgChart',//指定在某个dom生成jorgchart
-                    dragAndDrop : false //设置是否可拖动
+                $("#org").jOrgChart({
+                    chartElement: '#jOrgChart',//指定在某个dom生成jorgchart
+                    dragAndDrop: false //设置是否可拖动
                 });
-				$('.node').click(function() {
-					//debugger;
-                    $('.node').css('backgroundColor', '#35363B'); //全部颜色设置为默认，然后开始高亮指定节点
-                    showRelItems(this);
-				});
-				var fullColSpan = $('.jOrgChart .node')[0].parentNode.colSpan; //获取整个表格的列数
+
+                var fullColSpan = $('.jOrgChart .node')[0].parentNode.colSpan; //获取整个表格的列数
                 var sjSects = [
                     {
                         id: '200',
@@ -68,33 +68,129 @@
                         name: '设计标4'
                     },
                     {
-                        id: '203',
+                        id: '204',
                         name: '设计标5'
                     }
                 ];
                 genSjSect(sjSects, fullColSpan);
+                $('.node').click(function () {
+                    //debugger;
+                    $('.node').css('backgroundColor', '#35363B'); //全部颜色设置为默认，然后开始高亮指定节点
+                    showRelItems(this);
+                });
 
+            }
+        });
+
+        $.ajax({
+            url: "sjSect.json",
+            type: 'POST',
+            dataType: 'JSON',
+            data: {action: 'org_select'},
+            success: function (result) {
+                $.otherData = result;
+                $.otherSect = getOtherSects($.otherData, []);
             }
         });
     });
 
     function showall(menu_list, parent) {
-        $.each(menu_list, function(index, val) {
-            if(val.childrens.length > 0){
+        $.each(menu_list, function (index, val) {
+            if (val.childrens.length > 0) {
                 var li = $("<li></li>");
-                li.append("<span data-id='"+val.id+"'>"+val.name+"</span>").append("<ul></ul>").appendTo(parent);
+                li.append("<span data-id='" + val.id + "' data-type='" + val.type + "'>" + val.name + "</span>").append("<ul></ul>").appendTo(parent);
                 //递归显示
                 showall(val.childrens, $(li).children().eq(1));
-            }else{
-                $("<li></li>").append("<span data-id='"+val.id+"'>"+val.name+"</span>").appendTo(parent);
+            } else {
+                $("<li></li>").append("<span data-id='" + val.id + "' data-type='" + val.type + "'>" + val.name + "</span>").appendTo(parent);
             }
         });
     }
 
     function showRelItems(node) {
-        debugger;
-        var itemId = node.firstChild.getAttribute('data-id');
         node.style.backgroundColor = '#FF0000';
+        var itemType = node.firstChild.getAttribute('data-type');
+        if (itemType == 'sg') {
+            //选中施工标
+            showSgRelItems(node);
+        } else if (itemType == 'jl') {
+            //选中监理标
+            showJlRelItems(node);
+        } else {
+            //选中其他标
+            showQtRelItems(node);
+        }
+    }
+
+    function showQtRelItems(node) {
+        //高亮展示其他标段相关标段
+        var itemId = node.firstChild.getAttribute('data-id');
+        var qtItem;
+        var jlItem;
+        var sgItems = [];
+        for (var i in $.otherSect) {
+            if ($.otherSect[i].id == itemId) qtItem = $.otherSect[i];
+        }
+
+
+        //找到并高亮其对应施工标
+        for (var i in $.sgSect) {
+            for (var j in $.sgSect[i].qtId) {
+                if ($.sgSect[i].qtId[j] == qtItem.id) sgItems.push($.sgSect[i]);
+            }
+        }
+        for (var i in sgItems) {
+            showSgRelItems($('.node>span[data-id=' + sgItems[i].id + ']').parent()[0]);
+        }
+    }
+
+
+    function showJlRelItems(node) {
+        //高亮展示监理标段相关标段
+        var itemId = node.firstChild.getAttribute('data-id');
+        var jlItem;
+        var sgItems = [];
+        for (var i in $.jlSect) {
+            if ($.jlSect[i].id == itemId) jlItem = $.jlSect[i];
+        }
+
+
+        //找到并高亮其对应施工标
+        for (var i in $.sgSect) {
+                if ($.sgSect[i].pid == jlItem.id) sgItems.push($.sgSect[i]);
+        }
+        for (var i in sgItems) {
+            showSgRelItems($('.node>span[data-id=' + sgItems[i].id + ']').parent()[0]);
+        }
+    }
+
+
+    function showSgRelItems(node) {
+        //高亮展示施工标段相关标段
+        node.style.backgroundColor = '#FF0000';
+        var itemId = node.firstChild.getAttribute('data-id');
+        var sgItem;
+        var jlItem;
+        var qtItems = [];
+        for (var i in $.sgSect) {
+            if ($.sgSect[i].id == itemId) sgItem = $.sgSect[i];
+        }
+
+        //找到并高亮其监理标
+        for (var i in $.jlSect) {
+            if ($.jlSect[i].id == sgItem.pid) jlItem = $.jlSect[i];
+        }
+        $('.node>span[data-id=' + jlItem.id + ']').parent().css('backgroundColor', '#FF0000');
+        //找到并高亮其对应其他标
+
+        for (var i in $.otherSect) {
+            for (var j in sgItem.qtId) {
+                if ($.otherSect[i].id == sgItem.qtId[j]) qtItems.push($.otherSect[i]);
+            }
+        }
+        for (var i in qtItems) {
+            $('.node>span[data-id=' + qtItems[i].id + ']').parent().css('backgroundColor', '#FF0000');
+        }
     }
 
     function findObjById(dataId) {
@@ -105,19 +201,19 @@
         return item;
     }
 
-//    function genSjSect(sjSects, colNum) { //根据传入设计标数组，在表格右侧生成设计标段结构样式
-//        if(!sjSects) return;
-//        var sjSectNum = sjSects.length; //设计标数目
-//        if(sjSectNum >= 3) {
-//
-//            var a=$('tr').eq(0);
-//            a.replaceWith(node);
-//        } else if(sjSectNum === 2) {
-//
-//        } else if (sjSectNum === 1) {
-//
-//        }
-//    }
+    //    function genSjSect(sjSects, colNum) { //根据传入设计标数组，在表格右侧生成设计标段结构样式
+    //        if(!sjSects) return;
+    //        var sjSectNum = sjSects.length; //设计标数目
+    //        if(sjSectNum >= 3) {
+    //
+    //            var a=$('tr').eq(0);
+    //            a.replaceWith(node);
+    //        } else if(sjSectNum === 2) {
+    //
+    //        } else if (sjSectNum === 1) {
+    //
+    //        }
+    //    }
 
 </script>
 </body>

@@ -6,7 +6,18 @@
 function genSjSect(sjSects, colNum) { //根据传入设计标数组，在表格右侧生成设计标段结构样式
     if(!sjSects) return;
     var sjSectNum = sjSects.length; //设计标数目
+    if(sjSectNum === 0) return;
     var node = '';
+    if(sjSectNum % 2 === 0) {
+        //偶数
+
+    } else {
+        //奇数
+        if(sjSectNum == 1) {
+
+        }
+
+    }
     if(sjSectNum >= 3) {
         node = `
 
