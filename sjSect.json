@@ -4,23 +4,28 @@
   "childrens": [
     {
       "id": "200",
-      "name": "设计标1"
+      "name": "设计标1",
+      "type": "design"
     },
     {
       "id": "201",
-      "name": "设计标2"
+      "name": "设计标2",
+      "type": "design"
     },
     {
       "id": "202",
-      "name": "设计标3"
+      "name": "设计标3",
+      "type": "design"
     },
     {
       "id": "203",
-      "name": "设计标4"
+      "name": "设计标4",
+      "type": "design"
     },
     {
       "id": "204",
-      "name": "设计标5"
+      "name": "设计标5",
+      "type": "design"
     }
   ]
 }

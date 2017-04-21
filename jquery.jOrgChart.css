@@ -223,6 +223,22 @@
   cursor: default;
 }
 
+.jOrgChart .node.project{
+  background-color 		: #FF0000;
+}
+
+.jOrgChart .node.design.onShow {
+  background-color 		: #ff00e2;
+}
+
+.jOrgChart .node.jl.onShow {
+  background-color 		: #00dcff;
+}
+
+.jOrgChart .node.sg.onShow {
+  background-color 		: #00ff27;
+}
+
 /* jQuery drag 'n drop */
 
 .drag-active {

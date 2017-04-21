@@ -75,7 +75,7 @@
                 genSjSect(sjSects, fullColSpan);
                 $('.node').click(function () {
                     //debugger;
-                    $('.node').css('backgroundColor', '#35363B'); //全部颜色设置为默认，然后开始高亮指定节点
+//                    $('.node').css('backgroundColor', '#35363B'); //全部颜色设置为默认，然后开始高亮指定节点
                     showRelItems(this);
                 });
 
@@ -108,7 +108,11 @@
     }
 
     function showRelItems(node) {
-        node.style.backgroundColor = '#FF0000';
+
+        $('.node').removeClass('onShow');
+        $(node).addClass('onShow');
+        debugger;
+//        node.style.backgroundColor = '#FF0000';
         var itemType = node.firstChild.getAttribute('data-type');
         if (itemType == 'sg') {
             //选中施工标
@@ -116,6 +120,9 @@
         } else if (itemType == 'jl') {
             //选中监理标
             showJlRelItems(node);
+        } else if (itemType == 'xm') {
+            //选中整个项目
+            $('.node').addClass('onShow');
         } else {
             //选中其他标
             showQtRelItems(node);
@@ -167,7 +174,8 @@
 
     function showSgRelItems(node) {
         //高亮展示施工标段相关标段
-        node.style.backgroundColor = '#FF0000';
+        $(node).addClass('onShow');
+//        node.style.backgroundColor = '#FF0000';
         var itemId = node.firstChild.getAttribute('data-id');
         var sgItem;
         var jlItem;
@@ -180,7 +188,7 @@
         for (var i in $.jlSect) {
             if ($.jlSect[i].id == sgItem.pid) jlItem = $.jlSect[i];
         }
-        $('.node>span[data-id=' + jlItem.id + ']').parent().css('backgroundColor', '#FF0000');
+        $('.node>span[data-id=' + jlItem.id + ']').parent().addClass('onShow');
         //找到并高亮其对应其他标
 
         for (var i in $.otherSect) {
@@ -189,7 +197,7 @@
             }
         }
         for (var i in qtItems) {
-            $('.node>span[data-id=' + qtItems[i].id + ']').parent().css('backgroundColor', '#FF0000');
+            $('.node>span[data-id=' + qtItems[i].id + ']').parent().addClass('onShow');
         }
     }
 

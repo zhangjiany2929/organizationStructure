@@ -31,7 +31,7 @@ function genSjSect(sjSects, colNum) { //根据传入设计标数组，在表格�
                     <div class="shortHeri"></div>
                 </td>
                 <td class="node-cell">
-                    <div class="node design" style="background-color: rgb(53, 54, 59); cursor: n-resize;"><span
+                    <div class="node design"><span
                             data-id="` + sjSects[sjSectNum-3].id + `">` + sjSects[sjSectNum-3].name + `</span></div>
                 </td>
             </tr>
@@ -45,8 +45,8 @@ function genSjSect(sjSects, colNum) { //根据传入设计标数组，在表格�
             </tr>
             <tr class="node-cells expanded">
                 <td class="node-cell lefttop3" colspan="` + colNum + `">
-                    <div class="node project" style="background-color: rgb(53, 54, 59); cursor: n-resize;"><span
-                            data-id="1">项目</span></div>
+                    <div class="node project"><span
+                            data-id="1" data-type="xm">项目</span></div>
 
                 </td>
                 <!--<td colspan="1" class="line2">-->
@@ -56,7 +56,7 @@ function genSjSect(sjSects, colNum) { //根据传入设计标数组，在表格�
                     <div class="shortHeri"></div>
                 </td>
                 <td class="node-cell">
-                    <div class="node design" style="background-color: rgb(53, 54, 59); cursor: n-resize;"><span
+                    <div class="node design"><span
                             data-id="` + sjSects[sjSectNum-2].id + `">` + sjSects[sjSectNum-2].name + `</span></div>
                 </td>
             </tr>
@@ -89,7 +89,7 @@ function genSjSect(sjSects, colNum) { //根据传入设计标数组，在表格�
                     <div class="shortHeri"></div>
                 </td>
                 <td class="node-cell">
-                    <div class="node design" style="background-color: rgb(53, 54, 59); cursor: n-resize;"><span
+                    <div class="node design"><span
                             data-id="` + sjSects[sjSectNum-1].id + `">` + sjSects[sjSectNum-1].name + `</span></div>
                 </td>
             </tr>
@@ -123,7 +123,7 @@ function genSjSect(sjSects, colNum) { //根据传入设计标数组，在表格�
                     <div class="shortHeri"></div>
                 </td>
                 <td class="node-cell">
-                    <div class="node" style="background-color: rgb(53, 54, 59); cursor: n-resize;"><span
+                    <div class="node design"><span
                             data-id="` + sjSects[sjSectNum-1-i].id + `">` + sjSects[sjSectNum-1-i].name + `</span></div>
                 </td>
             </tr>
@@ -159,7 +159,7 @@ function genSjSect(sjSects, colNum) { //根据传入设计标数组，在表格�
                     <div class="shortHeri"></div>
                 </td>
                 <td class="node-cell">
-                    <div class="node design" style="background-color: rgb(53, 54, 59); cursor: n-resize;"><span
+                    <div class="node design"><span
                              data-id="` + sjSects[0].id + `">` + sjSects[0].name + `</span></div>
                 </td>
             </tr>
@@ -173,7 +173,7 @@ function genSjSect(sjSects, colNum) { //根据传入设计标数组，在表格�
             </tr>
             <tr class="node-cells expanded">
                 <td class="node-cell lefttop3" colspan="` + colNum + `">
-                    <div class="node project" style="background-color: rgb(53, 54, 59); cursor: n-resize;"><span
+                    <div class="node project"><span
                             data-id="1">项目</span></div>
 
                 </td>
@@ -201,7 +201,7 @@ function genSjSect(sjSects, colNum) { //根据传入设计标数组，在表格�
                     <div class="shortHeri"></div>
                 </td>
                 <td class="node-cell">
-                    <div class="node design" style="background-color: rgb(53, 54, 59); cursor: n-resize;"><span
+                    <div class="node design"><span
                              data-id="` + sjSects[1].id + `">` + sjSects[1].name + `</span></div>
                 </td>
             </tr>
@@ -212,7 +212,7 @@ function genSjSect(sjSects, colNum) { //根据传入设计标数组，在表格�
         
         <tr class="node-cells expanded">
                 <td class="node-cell" colspan="` + colNum + `">
-                    <div class="node project" style="background-color: rgb(53, 54, 59); cursor: n-resize;"><span
+                    <div class="node project"><span
                             data-id="1">项目</span></div>
 
                 </td>
@@ -229,7 +229,7 @@ function genSjSect(sjSects, colNum) { //根据传入设计标数组，在表格�
                     <div class="shortHeri"></div>
                 </td>
                 <td class="node-cell">
-                    <div class="node design" style="background-color: rgb(53, 54, 59); cursor: n-resize;"><span
+                    <div class="node design"><span
                             data-id="` + sjSects[0].id + `">` + sjSects[0].name + `</span></div>
                 </td>
             </tr>
@@ -238,4 +238,6 @@ function genSjSect(sjSects, colNum) { //根据传入设计标数组，在表格�
     }
     var firstTr = $('tr').eq(0);
     firstTr.replaceWith(node);
+    setClass();
+    $('.node').addClass('onShow');
 }
