@@ -32,6 +32,7 @@ function setClass() {
     nodes.each(function() {
         var node = $(this);
         var itemId = this.firstChild.getAttribute('data-id');
+        if (!itemId) itemId = this.children[1].getAttribute('data-id');
         var sectItem;
         //找到其对应的信息
         for (var j in $.sgSect) {

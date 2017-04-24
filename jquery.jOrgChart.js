@@ -115,6 +115,7 @@
         // Construct the node container(s)
         var $nodeRow = $("<tr/>").addClass("node-cells");
         var $nodeCell = $("<td/>").addClass("node-cell").attr("colspan", 2);
+        var $containDiv = $("<div/>").addClass("container-div");
         var $childNodes = $node.children("ul:first").children("li");
         var $nodeDiv;
 
@@ -134,6 +135,7 @@
         $node.data("tree-node", nodeCount);
         $nodeDiv = $("<div>").addClass("node")
             .data("tree-node", nodeCount)
+            .append($("<span/>").addClass("item-icon"))
             .append($nodeContent);
 
         // Expand and contract nodes
@@ -160,7 +162,8 @@
             });
         }
 
-        $nodeCell.append($nodeDiv);
+        $containDiv.append($nodeDiv);
+        $nodeCell.append($containDiv);
         $nodeRow.append($nodeCell);
         $tbody.append($nodeRow);
 

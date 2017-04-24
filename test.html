@@ -6,7 +6,7 @@
     <link rel="stylesheet" href='jquery.jOrgChart.css'/>
     <script type='text/javascript' src='jquery.min.js'></script>
     <script type='text/javascript' src='jquery.jOrgChart.js'></script>
-    <script type="text/javascript" src="genSjSect_new.js"></script>
+    <script type="text/javascript" src="genSjSect_new_2.js"></script>
     <script type="text/javascript" src="parseData.js"></script>
     <style>
         span {
@@ -15,13 +15,7 @@
             font-size: 12px;
         }
 
-        .jOrgChart .node {
-            width: 120px;
-            height: 50px;
-            line-height: 50px;
-            border-radius: 4px;
-            margin: 0 8px;
-        }
+
     </style>
 </head>
 <body>
@@ -48,8 +42,7 @@
                     chartElement: '#jOrgChart',//指定在某个dom生成jorgchart
                     dragAndDrop: false //设置是否可拖动
                 });
-
-                var fullColSpan = $('.jOrgChart .node')[0].parentNode.colSpan; //获取整个表格的列数
+                var fullColSpan = $('.jOrgChart .node-cell')[0].colSpan; //获取整个表格的列数
                 var sjSects = [
                     {
                         id: '200',
@@ -72,13 +65,13 @@
                         name: '设计标5'
                     }
                 ];
+//                debugger;
                 genSjSect(sjSects, fullColSpan);
                 $('.node').click(function () {
                     //debugger;
 //                    $('.node').css('backgroundColor', '#35363B'); //全部颜色设置为默认，然后开始高亮指定节点
                     showRelItems(this);
                 });
-
             }
         });
 
@@ -111,7 +104,7 @@
 
         $('.node').removeClass('onShow');
         $(node).addClass('onShow');
-        debugger;
+//        debugger;
 //        node.style.backgroundColor = '#FF0000';
         var itemType = node.firstChild.getAttribute('data-type');
         if (itemType == 'sg') {
@@ -208,21 +201,6 @@
         };
         return item;
     }
-
-    //    function genSjSect(sjSects, colNum) { //根据传入设计标数组，在表格右侧生成设计标段结构样式
-    //        if(!sjSects) return;
-    //        var sjSectNum = sjSects.length; //设计标数目
-    //        if(sjSectNum >= 3) {
-    //
-    //            var a=$('tr').eq(0);
-    //            a.replaceWith(node);
-    //        } else if(sjSectNum === 2) {
-    //
-    //        } else if (sjSectNum === 1) {
-    //
-    //        }
-    //    }
-
 </script>
 </body>
 </html>
