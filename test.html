@@ -63,7 +63,12 @@
                     {
                         id: '204',
                         name: '设计标5'
+                    },
+                    {
+                        id: '204',
+                        name: '设计标5'
                     }
+
                 ];
 //                debugger;
                 genSjSect(sjSects, fullColSpan);
@@ -106,7 +111,7 @@
         $(node).addClass('onShow');
 //        debugger;
 //        node.style.backgroundColor = '#FF0000';
-        var itemType = node.firstChild.getAttribute('data-type');
+        var itemType = $('[data-id]',node)[0].getAttribute('data-type');
         if (itemType == 'sg') {
             //选中施工标
             showSgRelItems(node);
@@ -124,7 +129,7 @@
 
     function showQtRelItems(node) {
         //高亮展示其他标段相关标段
-        var itemId = node.firstChild.getAttribute('data-id');
+        var itemId = $('[data-id]',node)[0].getAttribute('data-id');
         var qtItem;
         var jlItem;
         var sgItems = [];
@@ -147,7 +152,7 @@
 
     function showJlRelItems(node) {
         //高亮展示监理标段相关标段
-        var itemId = node.firstChild.getAttribute('data-id');
+        var itemId = $('[data-id]',node)[0].getAttribute('data-id');
         var jlItem;
         var sgItems = [];
         for (var i in $.jlSect) {
@@ -166,10 +171,11 @@
 
 
     function showSgRelItems(node) {
+        debugger;
         //高亮展示施工标段相关标段
         $(node).addClass('onShow');
 //        node.style.backgroundColor = '#FF0000';
-        var itemId = node.firstChild.getAttribute('data-id');
+        var itemId = $('[data-id]',node)[0].getAttribute('data-id');
         var sgItem;
         var jlItem;
         var qtItems = [];

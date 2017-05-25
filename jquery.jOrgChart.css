@@ -60,6 +60,16 @@
     border-bottom: 3px solid black;
 }
 
+.jOrgChart .shortHeri2 {
+    height: 14px;
+    width: 10px;
+}
+
+.jOrgChart .hidOverflow {
+    overflow: hidden;
+}
+
+
 .jOrgChart .shortHeriMid {
     height: 31px;
     width: 10px;

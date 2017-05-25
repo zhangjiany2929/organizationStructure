@@ -10,11 +10,207 @@ function genSjSect(sjSects, colNum) { //根据传入设计标数组，在表格�
     var node = '';
     if (sjSectNum % 2 === 0) {
         //偶数
+        if (sjSectNum == 0) {
+            //完全没有设计标
+            node =
+                `
+            <tr class="node-cells expanded">
+                <td class="node-cell" colspan="` + colNum + `">
+                    <div class="container-div">
+                        <div class="node">
+                            <span>logo</span>
+                            <span data-id="1">项目</span>
+                        </div>
+                    </div>
+                </td>
+                </td>
 
+            </tr>
+            `;
+        }
+        else {
+            //2+2n个设计标
+            var n = (sjSectNum - 2) / 2;
+            node =
+                `
+            <tr class="node-cells expanded">
+                <td class="node-cell" colspan="` + colNum + `">
+                    <div class="node" style="background-color: rgb(53, 54, 59); cursor: n-resize;"><span
+                            data-id="1">项目</span></div>
+
+                </td>
+                <!--<td colspan="1" class="line2">-->
+
+                </td>
+
+            </tr>
+            <tr>
+                <td colspan="` + colNum + `" class="noFont">
+                    <!--<div class="line3 downMid"></div>-->
+                    <div class="downRight3"></div>
+                    <div class="downLeft3"></div>
+                </td>
+                <!--<td colspan="2" class="line3">-->
+                    <!--<div class="lefttop2"></div>-->
+                <!--</td>-->
+            </tr>
+
+
+
+            <tr>
+                <td colspan="` + colNum + `" class="noFont">
+                    <!--<div class="line3 downMid"></div>-->
+                    <div class="downRight4"></div>
+                    <div class="inlineB widthHight downLeft4">
+                    </div>
+                </td>
+                <td>
+                    <div class="ph"></div>
+                    <div class="shortHeriMid left5 relLeft"></div>
+                </td>
+                <td class="node-cell relLeft">
+                    <div class="node" style="background-color: rgb(53, 54, 59); cursor: n-resize;"><span
+                            data-id="1">设计1</span></div>
+                </td>
+            </tr>
+            <!--<tr>-->
+                <!--<td colspan="4" class="noFont">-->
+                    <!--&lt;!&ndash;<div class="line3 downMid"></div>&ndash;&gt;-->
+                    <!--<div class="downRight3"></div>-->
+                    <!--<div class="downLeft3 right4"></div>-->
+                <!--</td>-->
+                <!--&lt;!&ndash;<td colspan="2" class="line3">&ndash;&gt;-->
+                <!--&lt;!&ndash;<div class="lefttop2"></div>&ndash;&gt;-->
+                <!--&lt;!&ndash;</td>&ndash;&gt;-->
+            <!--</tr>-->
+`;
+            for (var i = 0; i < n; i++) {
+                node = node +
+                `
+            <tr>
+                <td colspan="` + colNum + `" class="noFont">
+                    <!--<div class="line3 downMid"></div>-->
+                    <div class="downRightHigh"></div>
+                    <div class="downLeftHigh"></div>
+                </td>
+                <td class="left5 relLeft">
+                    <div class="shortHeri"></div>
+                    <div></div>
+                </td>
+                <td class="node-cell relLeft">
+                    <div class="node" style="background-color: rgb(53, 54, 59); cursor: n-resize;"><span
+                            data-id="1">设计2</span></div>
+                </td>
+            </tr>
+                `;
+
+            }
+
+            node = node +
+            `
+            <tr>
+                <td colspan="` + colNum + `" class="noFont">
+                    <div class="downRight3"></div>
+                    <div class="downLeft3 hidOverflow"><div class="top relLeft"></div></div>
+                </td>
+                <td class="left5 relLeft">
+                    <div class="shortHeri2"></div>
+                    <div></div>
+                </td>
+            </tr>
+            `;
+
+            for (var i = 0; i < n; i++) {
+                node = node +
+                `
+            <tr>
+                <td colspan="` + colNum + `" class="noFont">
+                    <div class="downRight2"></div>
+                    <div class="downLeft2">
+                        <div class="ph border2"></div>
+                        <div class="ph border2"></div>
+                        <div class="ph border2"></div>
+                    </div>
+                </td>
+                <td class="left5 relLeft">
+                    <div class="shortHeri"></div>
+                    <div></div>
+                </td>
+                <td class="node-cell relLeft">
+                    <div class="node" style="background-color: rgb(53, 54, 59); cursor: n-resize;"><span
+                            data-id="1">设计3</span></div>
+                </td>
+            </tr>
+                
+                `;
+
+            }
+
+
+            node = node +
+            `
+            
+            <!--<tr>-->
+                <!--<td colspan="4" class="noFont">-->
+                    <!--<div class="downRight3"></div>-->
+                    <!--<div class="downLeft3 right4"></div>-->
+                <!--</td>-->
+            <!--</tr>-->
+            <tr class="node-cells expanded">
+                <td colspan="` + colNum + `" class="noFont">
+                    <div class="downRightHigh"></div>
+                    <div class="downLeftHigh"></div>
+                </td>
+                <td>
+                    <div class="shortHeri left5 relLeft"></div>
+                </td>
+                <td class="node-cell relLeft">
+                    <div class="node" style="background-color: rgb(53, 54, 59); cursor: n-resize;"><span
+                            data-id="1">设计5</span></div>
+                </td>
+            </tr>
+                `;
+        }
     } else {
         //奇数
         if (sjSectNum == 1) {
+            node =
+                `
+            <tr class="node-cells expanded">
+                <td class="node-cell" colspan="` + colNum + `">
+                    <div class="container-div">
+                        <div class="node">
+                            <span>logo</span>
+                            <span data-id="1">项目</span>
+                        </div>
+                    </div>
+                </td>
+                </td>
 
+            </tr>
+                            <tr>
+                <td colspan="` + colNum + `" class="noFont">
+                    <div class="downRight2"></div>
+                    <div class="downLeft2">
+                        <div class="ph border2"></div>
+                        <div class="top ph border2 relLeft"></div>
+                        <div class="ph border2"></div>
+                    </div>
+                </td>
+                <td class="relLeft">
+                    <div class="shortHeri"></div>
+                    <div></div>
+                </td>
+                <td class="node-cell relLeft">
+                    <div class="container-div">
+                        <div class="node">
+                            <span>logo</span>
+                            <span data-id="1">设计3</span>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+                `;
         } else {
             //3+2n个设计标
             var n = (sjSectNum - 3) / 2;
@@ -60,7 +256,10 @@ function genSjSect(sjSects, colNum) { //根据传入设计标数组，在表格�
             </tr>
 
             
-            <tr>
+           `;
+            for (var i = 0; i < n; i++) {
+                node = node + `
+                 <tr>
                 <td colspan="` + colNum + `" class="noFont">
                     <div class="downRightHigh"></div>
                     <div class="downLeftHigh"></div>
@@ -78,6 +277,11 @@ function genSjSect(sjSects, colNum) { //根据传入设计标数组，在表格�
                     </div>
                 </td>
             </tr>
+`;
+            }
+
+            node = node +
+                `
             
 
 
@@ -103,7 +307,11 @@ function genSjSect(sjSects, colNum) { //根据传入设计标数组，在表格�
                     </div>
                 </td>
             </tr>
-            <tr>
+`;
+            for (var i = 0; i < n; i++) {
+                node = node +
+                    `
+                                    <tr>
                 <td colspan="` + colNum + `" class="noFont">
                     <!--<div class="line3 downMid"></div>-->
                     <div class="downRightHigh"></div>
@@ -122,6 +330,12 @@ function genSjSect(sjSects, colNum) { //根据传入设计标数组，在表格�
                     </div>
                 </td>
             </tr>
+                        `;
+            }
+
+            node = node +
+                `
+        
 
             <tr>
                 <td colspan="` + colNum + `" class="noFont">
