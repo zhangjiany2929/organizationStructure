@@ -272,6 +272,10 @@
     background-color: #ff00e2;
 }
 
+.jOrgChart .node.qt.onShow {
+    background-color: #ff00e2;
+}
+
 .jOrgChart .node.jl.onShow {
     background-color: #00dcff;
 }

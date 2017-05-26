@@ -42,39 +42,40 @@
                     chartElement: '#jOrgChart',//指定在某个dom生成jorgchart
                     dragAndDrop: false //设置是否可拖动
                 });
-                var fullColSpan = $('.jOrgChart .node-cell')[0].colSpan; //获取整个表格的列数
-                var sjSects = [
-                    {
-                        id: '200',
-                        name: '设计标1'
-                    },
-                    {
-                        id: '201',
-                        name: '设计标2'
-                    },
-                    {
-                        id: '202',
-                        name: '设计标3'
-                    },
-                    {
-                        id: '203',
-                        name: '设计标4'
-                    },
-                    {
-                        id: '204',
-                        name: '设计标5'
-                    },
-                    {
-                        id: '204',
-                        name: '设计标5'
-                    }
-
-                ];
-//                debugger;
-                genSjSect(sjSects, fullColSpan);
+//                var fullColSpan = $('.jOrgChart .node-cell')[0].colSpan; //获取整个表格的列数
+//                var sjSects = [
+//                    {
+//                        id: '200',
+//                        name: '设计标1'
+//                    },
+//                    {
+//                        id: '201',
+//                        name: '设计标2'
+//                    },
+//                    {
+//                        id: '202',
+//                        name: '设计标3'
+//                    },
+//                    {
+//                        id: '203',
+//                        name: '设计标4'
+//                    },
+//                    {
+//                        id: '204',
+//                        name: '设计标5'
+//                    },
+//                    {
+//                        id: '205',
+//                        name: '设计标6'
+//                    },
+//                    {
+//                        id: '206',
+//                        name: '设计标7'
+//                    }
+//
+//                ];
+//                genSjSect(sjSects, fullColSpan);
                 $('.node').click(function () {
-                    //debugger;
-//                    $('.node').css('backgroundColor', '#35363B'); //全部颜色设置为默认，然后开始高亮指定节点
                     showRelItems(this);
                 });
             }
@@ -86,6 +87,12 @@
             dataType: 'JSON',
             data: {action: 'org_select'},
             success: function (result) {
+                var sjSects = result.childrens;
+                var fullColSpan = $('.jOrgChart .node-cell')[0].colSpan; //获取整个表格的列数
+                genSjSect(sjSects, fullColSpan);
+                $('.node').click(function () {
+                    showRelItems(this);
+                });
                 $.otherData = result;
                 $.otherSect = getOtherSects($.otherData, []);
             }
@@ -128,6 +135,7 @@
     }
 
     function showQtRelItems(node) {
+        debugger;
         //高亮展示其他标段相关标段
         var itemId = $('[data-id]',node)[0].getAttribute('data-id');
         var qtItem;
@@ -171,7 +179,6 @@
 
 
     function showSgRelItems(node) {
-        debugger;
         //高亮展示施工标段相关标段
         $(node).addClass('onShow');
 //        node.style.backgroundColor = '#FF0000';

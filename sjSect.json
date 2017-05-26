@@ -26,6 +26,16 @@
       "id": "204",
       "name": "设计标5",
       "type": "design"
+    },
+    {
+      "id": "205",
+      "name": "检测标6",
+      "type": "design"
+    },
+    {
+      "id": "206",
+      "name": "勘察标7",
+      "type": "design"
     }
   ]
 }
