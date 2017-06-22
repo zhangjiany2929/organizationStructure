@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>jOrgChart异步加载</title>
+    <title>项目架构图</title>
     <link rel="stylesheet" href='jquery.jOrgChart.css'/>
     <script type='text/javascript' src='jquery.min.js'></script>
     <script type='text/javascript' src='jquery.jOrgChart.js'></script>
@@ -46,25 +46,33 @@
                 $('.node').click(function () {
                     showRelItems(this);
                 });
+                //所有监理标加logo
+                $('[data-type=jl]').prev().each(function () {
+                    this.classList.add('jl-logo');
+                });
+                //所有施工标加logo
+                $('[data-type=sg]').prev().each(function () {
+                    this.classList.add('sg-logo');
+                });
+                $.ajax({
+                    url: "sjSect.json",
+                    type: 'POST',
+                    dataType: 'JSON',
+                    data: {action: 'org_select'},
+                    success: function (result) {
+                        var sjSects = result.childrens;
+                        var fullColSpan = $('.jOrgChart .node-cell')[0].colSpan; //获取整个表格的列数
+                        genSjSect(sjSects, fullColSpan);
+                        $('.node').click(function () {
+                            showRelItems(this);
+                        });
+                        $.otherData = result;
+                        $.otherSect = getOtherSects($.otherData, []);
+                    }
+                });
             }
         });
 
-        $.ajax({
-            url: "sjSect.json",
-            type: 'POST',
-            dataType: 'JSON',
-            data: {action: 'org_select'},
-            success: function (result) {
-                var sjSects = result.childrens;
-                var fullColSpan = $('.jOrgChart .node-cell')[0].colSpan; //获取整个表格的列数
-                genSjSect(sjSects, fullColSpan);
-                $('.node').click(function () {
-                    showRelItems(this);
-                });
-                $.otherData = result;
-                $.otherSect = getOtherSects($.otherData, []);
-            }
-        });
     });
 </script>
 </body>
