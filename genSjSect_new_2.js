@@ -343,7 +343,7 @@ function genSjSect(sjSects, colNum) { //根据传入设计标数组，在表格�
                 <td class="node-cell relLeft">
                     <div class="container-div">
                         <div class="node qt">
-                            <span class="sj-logo4"></span>
+                            <span class="sj-logo"></span>
                             <span data-id="`+sjSects[(sjSects.length-1)].id+`">`+sjSects[(sjSects.length-1)].name+`</span></div>
                         </div>
                     </div>
