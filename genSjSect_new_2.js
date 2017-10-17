@@ -19,7 +19,7 @@ function genSjSect(sjSects, colNum) { //根据传入设计标数组，在表格�
                     <div class="container-div">
                         <div class="node project">
                             <span class="prj-logo"></span>
-                            <span data-id="1">`+ $.prjData.name +`</span>
+                            <span data-id="1" data-type="xm">`+ $.prjData.name +`</span>
                         </div>
                     </div>
                 </td>
@@ -38,7 +38,7 @@ function genSjSect(sjSects, colNum) { //根据传入设计标数组，在表格�
                     <div class="node project">
                     <span class="prj-logo"></span>
                     <span
-                            data-id="1">`+ $.prjData.name +`</span></div>
+                            data-id="1" data-type="xm">`+ $.prjData.name +`</span></div>
 
                 </td>
                 <!--<td colspan="1" class="line2">-->
@@ -174,7 +174,7 @@ function genSjSect(sjSects, colNum) { //根据传入设计标数组，在表格�
                     <div class="container-div">
                         <div class="node project">
                             <span class="prj-logo"></span>
-                            <span data-id="1">`+ $.prjData.name +`</span>
+                            <span data-id="1" data-type="xm">`+ $.prjData.name +`</span>
                         </div>
                     </div>
                 </td>
@@ -213,7 +213,7 @@ function genSjSect(sjSects, colNum) { //根据传入设计标数组，在表格�
                     <div class="container-div">
                         <div class="node project">
                             <span class="prj-logo"></span>
-                            <span data-id="1">`+ $.prjData.name +`</span>
+                            <span data-id="1" data-type="xm">`+ $.prjData.name +`</span>
                         </div>
                     </div>
                 </td>
